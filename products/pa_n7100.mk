@@ -34,9 +34,7 @@ include vendor/pa/config/pa_common.mk
 $(call inherit-product, device/samsung/n7100/full_n7100.mk)
 
 # Product Package Extras - Repos can be added manually or via addprojects.py
--include vendor/pa/packages/n7100.mk
-
-# CM Package Extras
+-include vendor/pa/packages/$(PRODUCT_NAME).mk
 -include vendor/pa/packages/cm.mk
 
 # Override AOSP build properties

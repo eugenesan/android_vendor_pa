@@ -31,7 +31,8 @@ include vendor/pa/config/pa_common.mk
 $(call inherit-product, device/lge/mako/full_mako.mk)
 
 # Product Package Extras - Repos can be added manually or via addprojects.py
--include vendor/pa/packages/mako.mk
+-include vendor/pa/packages/$(PRODUCT_NAME).mk
+-include vendor/pa/packages/cm.mk
 
 # Override AOSP build properties
 PRODUCT_NAME := pa_mako
@@ -44,5 +45,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=occam BUILD_FINGERPRINT="google/occ
 GET_VENDOR_PROPS := $(shell vendor/pa/tools/getvendorprops.py $(PRODUCT_NAME))
 GET_PROJECT_RMS := $(shell vendor/pa/tools/removeprojects.py $(PRODUCT_NAME))
 GET_PROJECT_ADDS := $(shell vendor/pa/tools/addprojects.py $(PRODUCT_NAME))
+GET_CM_PROJECT_ADDS := $(shell vendor/pa/tools/addprojects.py cm.adds)
 
 endif

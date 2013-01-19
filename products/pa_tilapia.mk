@@ -30,6 +30,10 @@ include vendor/pa/config/pa_common.mk
 # Inherit AOSP device configuration
 $(call inherit-product, device/asus/tilapia/full_tilapia.mk)
 
+# Product Package Extras - Repos can be added manually or via addprojects.py
+-include vendor/pa/packages/$(PRODUCT_NAME).mk
+-include vendor/pa/packages/cm.mk
+
 # Override AOSP build properties
 PRODUCT_NAME := pa_tilapia
 PRODUCT_BRAND := Google

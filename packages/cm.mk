@@ -3,6 +3,7 @@ PRODUCT_PACKAGES += \
     DSPManager \
     libcyanogen-dsp \
     CMFileManager \
+    CMFileManagerThemes \
     Torch \
     openvpn \
     e2fsck \

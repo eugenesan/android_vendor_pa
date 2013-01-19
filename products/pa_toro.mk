@@ -35,9 +35,7 @@ include vendor/pa/config/pa_common.mk
 $(call inherit-product, device/samsung/toro/full_toro.mk)
 
 # Product Package Extras - Repos can be added manually or via addprojects.py
--include vendor/pa/packages/toro.mk
-
-# CM Package Extras
+-include vendor/pa/packages/$(PRODUCT_NAME).mk
 -include vendor/pa/packages/cm.mk
 
 # Override AOSP build properties

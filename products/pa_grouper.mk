@@ -30,6 +30,10 @@ include vendor/pa/config/pa_common.mk
 # Inherit AOSP device configuration
 $(call inherit-product, device/asus/grouper/full_grouper.mk)
 
+# Product Package Extras - Repos can be added manually or via addprojects.py
+-include vendor/pa/packages/$(PRODUCT_NAME).mk
+-include vendor/pa/packages/cm.mk
+
 # Override AOSP build properties
 PRODUCT_NAME := pa_grouper
 PRODUCT_BRAND := Google
@@ -37,6 +41,7 @@ PRODUCT_MODEL := Nexus 7
 PRODUCT_MANUFACTURER := Asus
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=nakasi BUILD_FINGERPRINT="google/nakasi/grouper:4.2.1/JOP40D/533553:user/release-keys" PRIVATE_BUILD_DESC="nakasi-user 4.2.1 JOP40D 533553 release-keys"
 
+# Update local_manifest.xml
 GET_VENDOR_PROPS := $(shell vendor/pa/tools/getvendorprops.py $(PRODUCT_NAME))
 
 endif

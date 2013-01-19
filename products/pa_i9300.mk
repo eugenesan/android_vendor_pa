@@ -31,9 +31,7 @@ include vendor/pa/config/pa_common.mk
 $(call inherit-product, device/samsung/i9300/full_i9300.mk)
 
 # Product Package Extras - Repos can be added manually or via addprojects.py
--include vendor/pa/packages/i9300.mk
-
-# CM Package Extras
+-include vendor/pa/packages/$(PRODUCT_NAME).mk
 -include vendor/pa/packages/cm.mk
 
 # Override AOSP build properties
