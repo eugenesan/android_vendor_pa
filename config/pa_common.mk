@@ -6,12 +6,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Copy specific ROM files
 PRODUCT_COPY_FILES += \
-    vendor/pa/prebuilt/common/apk/Term.apk:system/app/Term.apk \
+    vendor/pa/prebuilt/common/app/Term.apk:system/app/Term.apk \
     vendor/pa/prebuilt/common/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so \
-    vendor/pa/prebuilt/common/apk/MarketEnabler.apk:system/app/MarketEnabler.apk \
-    vendor/pa/prebuilt/common/apk/AdobeFlashPlayer.apk:system/app/AdobeFlashPlayer.apk \
-    vendor/pa/prebuilt/common/apk/GooManager.apk:system/app/GooManager.apk \
-    vendor/pa/prebuilt/common/apk/SuperSU.apk:system/app/SuperSU.apk \
+    vendor/pa/prebuilt/common/app/AmazonAppstore.apk:system/app/AmazonAppstore.apk \
+    vendor/pa/prebuilt/common/app/MarketEnabler.apk:system/app/MarketEnabler.apk \
+    vendor/pa/prebuilt/common/app/AdobeFlashPlayer.apk:system/app/AdobeFlashPlayer.apk \
+    vendor/pa/prebuilt/common/app/GooManager.apk:system/app/GooManager.apk \
+    vendor/pa/prebuilt/common/app/Superuser.apk:system/app/Superuser.apk \
     vendor/pa/prebuilt/common/xbin/su:system/xbin/su
 
 # init.d support
@@ -40,7 +41,7 @@ $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
 # Exclude prebuilt paprefs from builds if the flag is set
 ifneq ($(PREFS_FROM_SOURCE),true)
     PRODUCT_COPY_FILES += \
-        vendor/pa/prebuilt/common/apk/ParanoidPreferences.apk:system/app/ParanoidPreferences.apk
+        vendor/pa/prebuilt/common/app/ParanoidPreferences.apk:system/app/ParanoidPreferences.apk
 else
     # Build paprefs from sources
     PRODUCT_PACKAGES += \

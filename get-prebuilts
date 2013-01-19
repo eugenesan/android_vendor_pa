@@ -1,18 +1,30 @@
 BASEDIR=`dirname $0`
 
-mkdir -p $BASEDIR/prebuilt/common/apk
+mkdir -p $BASEDIR/prebuilt/common/app
+
+# Get GooManager (Source: http://goo.im/devs/s0updev/goomanager)
+curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/GooManager.apk -O -L "http://goo.im/devs/s0updev/goomanager/GooManager_2.1.2.apk"
+
+# Get SuperSU (Source: http://forum.xda-developers.com/showthread.php?t=1538053)
+curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/SuperSU.zip -O -L "http://download.chainfire.eu/298/SuperSU/CWM-SuperSU-v0.99.zip?retrieve_file=1"
+unzip -o -j -d $BASEDIR/prebuilt/common/app $BASEDIR/prebuilt/common/app/SuperSU.zip system/app/Superuser.apk
+unzip -o -j -d $BASEDIR/prebuilt/common/xbin $BASEDIR/prebuilt/common/app/SuperSU.zip system/xbin/su
+rm $BASEDIR/prebuilt/common/app/SuperSU.zip
+
+# Get Amazon Apps Store (Source: http://www.amazon.com/gp/mas/get/android)
+curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/AmazonAppstore.apk -O -L "http://www.amazon.com/gp/mas/get/android/ref=mas_mbl_ldg?ie=UTF8&dl=1"
 
 # Get Market Enabler (Source: https://code.google.com/p/market-enabler/downloads/list)
-curl -L -o $BASEDIR/prebuilt/common/apk/MarketEnabler.apk -O -L "http://market-enabler.googlecode.com/files/MarketEnabler_v3113.apk"
+curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/MarketEnabler.apk -O -L "http://market-enabler.googlecode.com/files/MarketEnabler_v3113.apk"
 
 # Get Adobe Flash Player (Source: http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html)
-curl -L -o $BASEDIR/prebuilt/common/apk/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.34/install_flash_player_ics.apk"
+curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.34/install_flash_player_ics.apk"
 
 # Get Pdroid manager (http://forum.xda-developers.com/showthread.php?p=34190204)
-#curl -L -o $BASEDIR/prebuilt/common/apk/Pdroid.apk -O -L "http://forum.xda-developers.com/attachment.php?attachmentid=1638382&d=1357994614"
+#curl --retry 5  -L -o $BASEDIR/prebuilt/common/app/Pdroid.apk -O -L "http://forum.xda-developers.com/attachment.php?attachmentid=1638382&d=1357994614"
 
 # Get Android Terminal Emulator (we use a prebuilt so it can update from the Market)
-curl -L -o $BASEDIR/prebuilt/common/apk/Term.apk -O -L "http://jackpal.github.com/Android-Terminal-Emulator/downloads/Term.apk"
-unzip -o -d $BASEDIR/prebuilt/common $BASEDIR/prebuilt/common/apk/Term.apk lib/armeabi/libjackpal-androidterm4.so
+curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/Term.apk -O -L "http://jackpal.github.com/Android-Terminal-Emulator/downloads/Term.apk"
+unzip -o -d $BASEDIR/prebuilt/common $BASEDIR/prebuilt/common/app/Term.apk lib/armeabi/libjackpal-androidterm4.so
 
 touch $BASEDIR/prebuilt/common/.`basename $0`
