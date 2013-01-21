@@ -4,5 +4,8 @@ prebuilt/common/app/*.zip
 prebuilt/common/lib/*
 prebuilt/common/xbin/*
 
+# Ignore generated manifest
+prebuilt/common/etc/build-manifest.xml
+
 # Ignore download stamp
 prebuilt/common/.get-prebuilts
