@@ -7,7 +7,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Copy specific ROM files
 PRODUCT_COPY_FILES += \
     vendor/pa/prebuilt/common/app/Term.apk:system/app/Term.apk \
-    vendor/pa/prebuilt/common/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so \
+    vendor/pa/prebuilt/common/lib/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so \
     vendor/pa/prebuilt/common/app/AmazonAppstore.apk:system/app/AmazonAppstore.apk \
     vendor/pa/prebuilt/common/app/MarketEnabler.apk:system/app/MarketEnabler.apk \
     vendor/pa/prebuilt/common/app/AdobeFlashPlayer.apk:system/app/AdobeFlashPlayer.apk \

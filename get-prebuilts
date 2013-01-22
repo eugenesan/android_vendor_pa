@@ -1,30 +1,42 @@
 BASEDIR=`dirname $0`
+CURL="curl --retry 5 --silent --show-error"
+UNPACK="unzip -q -o"
 
-mkdir -p $BASEDIR/prebuilt/common/app
+echo "Fetching prebuilts:"
+
+set -e
+mkdir -p $BASEDIR/prebuilt/common/{app,lib,xbin}
 
 # Get GooManager (Source: http://goo.im/devs/s0updev/goomanager)
-curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/GooManager.apk -O -L "http://goo.im/devs/s0updev/goomanager/GooManager_2.1.2.apk"
+echo "* GooManager"
+$CURL -L -o $BASEDIR/prebuilt/common/app/GooManager.apk -O -L "http://goo.im/devs/s0updev/goomanager/GooManager_2.1.2.apk"
 
+echo "* SuperSU"
 # Get SuperSU (Source: http://forum.xda-developers.com/showthread.php?t=1538053)
-curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/SuperSU.zip -O -L "http://download.chainfire.eu/298/SuperSU/CWM-SuperSU-v0.99.zip?retrieve_file=1"
-unzip -o -j -d $BASEDIR/prebuilt/common/app $BASEDIR/prebuilt/common/app/SuperSU.zip system/app/Superuser.apk
-unzip -o -j -d $BASEDIR/prebuilt/common/xbin $BASEDIR/prebuilt/common/app/SuperSU.zip system/xbin/su
+$CURL -L -o $BASEDIR/prebuilt/common/app/SuperSU.zip -O -L "http://download.chainfire.eu/298/SuperSU/CWM-SuperSU-v0.99.zip?retrieve_file=1" --referer "http://download.chainfire.eu/298/SuperSU/CWM-SuperSU-v0.99.zip"
+$UNPACK -j -d $BASEDIR/prebuilt/common/app $BASEDIR/prebuilt/common/app/SuperSU.zip system/app/Superuser.apk
+$UNPACK -j -d $BASEDIR/prebuilt/common/xbin $BASEDIR/prebuilt/common/app/SuperSU.zip system/xbin/su
 rm $BASEDIR/prebuilt/common/app/SuperSU.zip
 
-# Get Amazon Apps Store (Source: http://www.amazon.com/gp/mas/get/android)
-curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/AmazonAppstore.apk -O -L "http://www.amazon.com/gp/mas/get/android/ref=mas_mbl_ldg?ie=UTF8&dl=1"
-
-# Get Market Enabler (Source: https://code.google.com/p/market-enabler/downloads/list)
-curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/MarketEnabler.apk -O -L "http://market-enabler.googlecode.com/files/MarketEnabler_v3113.apk"
-
-# Get Adobe Flash Player (Source: http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html)
-curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.34/install_flash_player_ics.apk"
-
-# Get Pdroid manager (http://forum.xda-developers.com/showthread.php?p=34190204)
-#curl --retry 5  -L -o $BASEDIR/prebuilt/common/app/Pdroid.apk -O -L "http://forum.xda-developers.com/attachment.php?attachmentid=1638382&d=1357994614"
-
+echo "* Android Terminal Emulator"
 # Get Android Terminal Emulator (we use a prebuilt so it can update from the Market)
-curl --retry 5 -L -o $BASEDIR/prebuilt/common/app/Term.apk -O -L "http://jackpal.github.com/Android-Terminal-Emulator/downloads/Term.apk"
-unzip -o -d $BASEDIR/prebuilt/common $BASEDIR/prebuilt/common/app/Term.apk lib/armeabi/libjackpal-androidterm4.so
+$CURL -L -o $BASEDIR/prebuilt/common/app/Term.apk -O -L "http://jackpal.github.com/Android-Terminal-Emulator/downloads/Term.apk"
+$UNPACK -j -d $BASEDIR/prebuilt/common/lib $BASEDIR/prebuilt/common/app/Term.apk lib/armeabi/libjackpal-androidterm4.so
 
-touch $BASEDIR/prebuilt/common/.`basename $0`
+echo "* Amazon Apps Store"
+# Get Amazon Apps Store (Source: http://www.amazon.com/gp/mas/get/android)
+$CURL -L -o $BASEDIR/prebuilt/common/app/AmazonAppstore.apk -O -L "http://www.amazon.com/gp/mas/get/android/ref=mas_mbl_ldg?ie=UTF8&dl=1"
+
+echo "* Market Enabler"
+# Get Market Enabler (Source: https://code.google.com/p/market-enabler/downloads/list)
+$CURL -L -o $BASEDIR/prebuilt/common/app/MarketEnabler.apk -O -L "http://market-enabler.googlecode.com/files/MarketEnabler_v3113.apk"
+
+echo "* Adobe Flash Player"
+# Get Adobe Flash Player (Source: http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html)
+$CURL -L -o $BASEDIR/prebuilt/common/app/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.34/install_flash_player_ics.apk"
+
+#echo "* Get Pdroid Manager"
+# Get Pdroid Manager (http://forum.xda-developers.com/showthread.php?p=34190204)
+#$CURL  -L -o $BASEDIR/prebuilt/common/app/Pdroid.apk -O -L "http://forum.xda-developers.com/attachment.php?attachmentid=1638382&d=1357994614"
+
+set +e
