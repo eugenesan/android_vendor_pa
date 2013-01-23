@@ -27,15 +27,8 @@ PREFS_FROM_SOURCE ?= true
 # Include ParanoidAndroid common configuration
 include vendor/pa/config/pa_common.mk
 
-# Include missing proprietaries
-#PRODUCT_COPY_FILES += \
-
 # Inherit AOSP device configuration
 $(call inherit-product, device/samsung/n7100/full_n7100.mk)
-
-# Product Package Extras - Repos can be added manually or via addprojects.py
--include vendor/pa/packages/$(PRODUCT_NAME).mk
--include vendor/pa/packages/cm.mk
 
 # Override AOSP build properties
 PRODUCT_NAME := pa_n7100
@@ -44,10 +37,14 @@ PRODUCT_MODEL := Galaxy Note II
 PRODUCT_MANUFACTURER := Samsung
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=t03gxx TARGET_DEVICE=t03g BUILD_FINGERPRINT="samsung/t03gxx/t03g:4.1.1/JRO03C/N7100XXALJ3:user/release-keys" PRIVATE_BUILD_DESC="t03gxx-user 4.1.1 JRO03C N7100XXALJ3 release-keys"
 
+# Product Package Extras - Repos can be added manually or via addprojects.py
+-include vendor/pa/packages/$(PRODUCT_NAME).mk
+-include vendor/pa/packages/cm.mk
+
+# Update local_manifest.xml
 GET_VENDOR_PROPS := $(shell vendor/pa/tools/getvendorprops.py $(PRODUCT_NAME))
 GET_PROJECT_RMS := $(shell vendor/pa/tools/removeprojects.py $(PRODUCT_NAME))
 GET_PROJECT_ADDS := $(shell vendor/pa/tools/addprojects.py $(PRODUCT_NAME))
 GET_CM_PROJECT_ADDS := $(shell vendor/pa/tools/addprojects.py cm.adds)
 
 endif
-

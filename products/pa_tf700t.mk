@@ -30,16 +30,16 @@ include vendor/pa/config/pa_common.mk
 # Inherit AOSP device configuration
 $(call inherit-product, device/asus/tf700t/full_tf700t.mk)
 
-# Product Package Extras - Repos can be added manually or via addprojects.py
--include vendor/pa/packages/$(PRODUCT_NAME).mk
--include vendor/pa/packages/cm.mk
-
 # Override AOSP build properties
 PRODUCT_NAME := pa_tf700t
 PRODUCT_BRAND := Google
 PRODUCT_MODEL := Transformer Infinity
 PRODUCT_MANUFACTURER := Asus
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=mantaray BUILD_FINGERPRINT="google/mantaray/manta:4.2.1/JOP40D/533553:user/release-keys" PRIVATE_BUILD_DESC="mantaray-user 4.2.1 JOP40D 533553 release-keys"
+
+# Product Package Extras - Repos can be added manually or via addprojects.py
+-include vendor/pa/packages/$(PRODUCT_NAME).mk
+-include vendor/pa/packages/cm.mk
 
 # Update local_manifest.xml
 GET_VENDOR_PROPS := $(shell vendor/pa/tools/getvendorprops.py $(PRODUCT_NAME))
@@ -48,4 +48,3 @@ GET_PROJECT_ADDS := $(shell vendor/pa/tools/addprojects.py $(PRODUCT_NAME))
 GET_CM_PROJECT_ADDS := $(shell vendor/pa/tools/addprojects.py cm.adds)
 
 endif
-
