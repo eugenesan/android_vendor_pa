@@ -13,11 +13,21 @@ manufacturer = None
 def isNullOrEmpty(value):
     return value is None or len(value) < 0
 
-for dirname, dirnames, filenames in os.walk('./device/'):
+def walklevel(some_dir, level=1):
+    some_dir = some_dir.rstrip(os.path.sep)
+    assert os.path.isdir(some_dir)
+    num_sep = some_dir.count(os.path.sep)
+    for root, dirs, files in os.walk(some_dir):
+        yield root, dirs, files
+        num_sep_this = root.count(os.path.sep)
+        if num_sep + level <= num_sep_this:
+            del dirs[:]
+
+for dirname, dirnames, subdirnames in walklevel('device', 1):
     for subdirname in dirnames:
-        path = os.path.join(dirname, subdirname)[9:]
-        if path.find(device) != -1:
-            manufacturer = path[:path.find('/')];
+        if subdirname == device:
+            manufacturer = dirname[dirname.find(os.path.sep)+1:];
+
 
 if isNullOrEmpty(manufacturer):
     manufacturer = raw_input('Manufacturer not found, please write your device manufacturer: ')
