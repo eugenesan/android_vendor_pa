@@ -18,25 +18,29 @@ $UNPACK -j -d $BASEDIR/prebuilt/common/app $BASEDIR/prebuilt/common/app/SuperSU.
 $UNPACK -j -d $BASEDIR/prebuilt/common/xbin $BASEDIR/prebuilt/common/app/SuperSU.zip system/xbin/su
 rm $BASEDIR/prebuilt/common/app/SuperSU.zip
 
-echo "* Android Terminal Emulator"
-# Get Android Terminal Emulator (we use a prebuilt so it can update from the Market)
-$CURL -L -o $BASEDIR/prebuilt/common/app/Term.apk -O -L "http://jackpal.github.com/Android-Terminal-Emulator/downloads/Term.apk"
-$UNPACK -j -d $BASEDIR/prebuilt/common/lib $BASEDIR/prebuilt/common/app/Term.apk lib/armeabi/libjackpal-androidterm4.so
+if [ "${PREBUILTS_ALL}" == "true" ]; then
+	echo "* Android Terminal Emulator"
+	# Get Android Terminal Emulator (we use a prebuilt so it can update from the Market)
+	$CURL -L -o $BASEDIR/prebuilt/common/app/Term.apk -O -L "http://jackpal.github.com/Android-Terminal-Emulator/downloads/Term.apk"
+	$UNPACK -j -d $BASEDIR/prebuilt/common/lib $BASEDIR/prebuilt/common/app/Term.apk lib/armeabi/libjackpal-androidterm4.so
 
-echo "* Amazon Apps Store"
-# Get Amazon Apps Store (Source: http://www.amazon.com/gp/mas/get/android)
-$CURL -L -o $BASEDIR/prebuilt/common/app/AmazonAppstore.apk -O -L "http://www.amazon.com/gp/mas/get/android/ref=mas_mbl_ldg?ie=UTF8&dl=1"
+	echo "* Amazon Apps Store"
+	# Get Amazon Apps Store (Source: http://www.amazon.com/gp/mas/get/android)
+	$CURL -L -o $BASEDIR/prebuilt/common/app/AmazonAppstore.apk -O -L "http://www.amazon.com/gp/mas/get/android/ref=mas_mbl_ldg?ie=UTF8&dl=1"
 
-echo "* Market Enabler"
-# Get Market Enabler (Source: https://code.google.com/p/market-enabler/downloads/list)
-$CURL -L -o $BASEDIR/prebuilt/common/app/MarketEnabler.apk -O -L "http://market-enabler.googlecode.com/files/MarketEnabler_v3113.apk"
+	echo "* Market Enabler"
+	# Get Market Enabler (Source: https://code.google.com/p/market-enabler/downloads/list)
+	$CURL -L -o $BASEDIR/prebuilt/common/app/MarketEnabler.apk -O -L "http://market-enabler.googlecode.com/files/MarketEnabler_v3113.apk"
 
-echo "* Adobe Flash Player"
-# Get Adobe Flash Player (Source: http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html)
-$CURL -L -o $BASEDIR/prebuilt/common/app/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.34/install_flash_player_ics.apk"
+	echo "* Adobe Flash Player"
+	# Get Adobe Flash Player (Source: http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html)
+	$CURL -L -o $BASEDIR/prebuilt/common/app/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.34/install_flash_player_ics.apk"
 
-#echo "* Get Pdroid Manager"
-# Get Pdroid Manager (http://forum.xda-developers.com/showthread.php?p=34190204)
-#$CURL  -L -o $BASEDIR/prebuilt/common/app/Pdroid.apk -O -L "http://forum.xda-developers.com/attachment.php?attachmentid=1638382&d=1357994614"
+	#echo "* Get Pdroid Manager"
+	# Get Pdroid Manager (http://forum.xda-developers.com/showthread.php?p=34190204)
+	#$CURL  -L -o $BASEDIR/prebuilt/common/app/Pdroid.apk -O -L "http://forum.xda-developers.com/attachment.php?attachmentid=1638382&d=1357994614"
+else
+	echo " * Skipping additional prebuilts, export PREBUILTS_ALL=true to change that"
+fi
 
 set +e
