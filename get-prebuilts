@@ -8,12 +8,12 @@ set -e
 mkdir -p $BASEDIR/prebuilt/common/{app,lib,xbin}
 
 # Get GooManager (Source: http://goo.im/devs/s0updev/goomanager)
-echo "* GooManager"
+echo "* Goo Manager"
 $CURL -L -o $BASEDIR/prebuilt/common/app/GooManager.apk -O -L "http://goo.im/devs/s0updev/goomanager/GooManager_2.1.2.apk"
 
 # Get SuperSU (Source: http://forum.xda-developers.com/showthread.php?t=1538053)
-echo "* SuperSU"
-$CURL -L -o $BASEDIR/prebuilt/common/app/SuperSU.zip -O -L "http://download.chainfire.eu/306/SuperSU/UPDATE-SuperSU-v1.00.zip?retrieve_file=1" --referer "http://download.chainfire.eu/306/SuperSU/UPDATE-SuperSU-v1.00.zip"
+echo "* Super SU"
+$CURL -L -o $BASEDIR/prebuilt/common/app/SuperSU.zip -O -L "http://download.chainfire.eu/308/SuperSU/UPDATE-SuperSU-v1.02.zip?retrieve_file=1" --referer "http://download.chainfire.eu/308/SuperSU/UPDATE-SuperSU-v1.02.zip"
 $UNPACK -j -d $BASEDIR/prebuilt/common/app $BASEDIR/prebuilt/common/app/SuperSU.zip system/app/Superuser.apk
 $UNPACK -j -d $BASEDIR/prebuilt/common/xbin $BASEDIR/prebuilt/common/app/SuperSU.zip system/xbin/su
 rm $BASEDIR/prebuilt/common/app/SuperSU.zip
@@ -24,20 +24,32 @@ if [ "${PREBUILTS_ALL}" == "true" ]; then
 	$CURL -L -o $BASEDIR/prebuilt/common/app/Term.apk -O -L "http://jackpal.github.com/Android-Terminal-Emulator/downloads/Term.apk"
 	$UNPACK -j -d $BASEDIR/prebuilt/common/lib $BASEDIR/prebuilt/common/app/Term.apk lib/armeabi/libjackpal-androidterm4.so
 
-	# Get Amazon Apps Store (Source: http://www.amazon.com/gp/mas/get/android)
-	echo "* Amazon Apps Store"
-	$CURL -L -o $BASEDIR/prebuilt/common/app/AmazonAppstore.apk -O -L "http://www.amazon.com/gp/mas/get/android/ref=mas_mbl_ldg?ie=UTF8&dl=1"
-
 	# Get Market Enabler (Source: https://code.google.com/p/market-enabler/downloads/list)
 	echo "* Market Enabler"
 	$CURL -L -o $BASEDIR/prebuilt/common/app/MarketEnabler.apk -O -L "http://market-enabler.googlecode.com/files/MarketEnabler_v3113.apk"
 
 	# Get Adobe Flash Player (Source: http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html)
 	echo "* Adobe Flash Player"
-	$CURL -L -o $BASEDIR/prebuilt/common/app/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.34/install_flash_player_ics.apk"
+	$CURL -L -o $BASEDIR/prebuilt/common/app/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.36/install_flash_player_ics.apk"
+
+	# Get Amazon Apps Store (Source: http://www.amazon.com/gp/mas/get/android)
+	echo "* Amazon App Store"
+	$CURL -L -o $BASEDIR/prebuilt/common/app/AmazonAppstore.apk -O -L "http://www.amazon.com/gp/mas/get/android/ref=mas_mbl_ldg?ie=UTF8&dl=1"
+
+	# Get Better Battery Stats (Source: http://forum.xda-developers.com/showthread.php?t=1179809)
+	echo "* Better Battery Stats"
+	$CURL -L -o $BASEDIR/prebuilt/common/app/BetterBatteryStats.apk -O -L "http://forum.xda-developers.com/attachment.php?attachmentid=1677961&d=1359206646"
+
+	# Get LuckyPatcher (http://chelpus.defcon5.biz)
+	echo "* Lucky Patcher"
+	$CURL  -L -o $BASEDIR/prebuilt/common/app/LuckyPatcher.apk -O -L "http://chelpus.defcon5.biz/LuckyPatcher.apk"
+
+	# Get Fdroid FOSS Market (http://forum.xda-developers.com/showthread.php?p=34190204)
+	echo "* Fdroid FOSS Market"
+	$CURL  -L -o $BASEDIR/prebuilt/common/app/Fdroid.apk -O -L "https://f-droid.org/FDroid.apk"
 
 	# Get Pdroid Manager (http://forum.xda-developers.com/showthread.php?p=34190204)
-	#echo "* Get Pdroid Manager"
+	#echo "* Pdroid Manager"
 	#$CURL  -L -o $BASEDIR/prebuilt/common/app/Pdroid.apk -O -L "http://forum.xda-developers.com/attachment.php?attachmentid=1638382&d=1357994614"
 else
 	echo " * Skipping additional prebuilts, export PREBUILTS_ALL=true to change that"
