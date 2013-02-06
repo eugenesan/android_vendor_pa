@@ -18,55 +18,55 @@
         "account":      "platform",
         "repository":   "hardware/qcom/audio",
         "target_path":  "hardware/qcom/audio",
-        "branch":       "master"
+        "branch":       "refs/tags/android-4.2.1_r1.2"
     },
     {
         "remote":       "aosp",
         "account":      "platform",
         "repository":   "hardware/qcom/bt",
         "target_path":  "hardware/qcom/bt",
-        "branch":       "master"
+        "branch":       "refs/tags/android-4.2.1_r1.2"
     },
     {
         "remote":       "aosp",
         "account":      "platform",
         "repository":   "hardware/qcom/camera",
         "target_path":  "hardware/qcom/camera",
-        "branch":       "master"
+        "branch":       "refs/tags/android-4.2.1_r1.2"
     },
     {
         "remote":       "github",
-        "account":      "ParanoidAndroid",
-        "repository":   "android_hardware_qcom_display",
+        "account":      "platform",
+        "repository":   "hardware/qcom/display",
         "target_path":  "hardware/qcom/display",
-        "branch":       "jellybean"
+        "branch":       "refs/tags/android-4.2.1_r1.2"
     },
     {
         "remote":       "aosp",
         "account":      "platform",
         "repository":   "hardware/qcom/gps",
         "target_path":  "hardware/qcom/gps",
-        "branch":       "master"
+        "branch":       "refs/tags/android-4.2.1_r1.2"
     },
     {
         "remote":       "aosp",
         "account":      "platform",
         "repository":   "hardware/qcom/media",
         "target_path":  "hardware/qcom/media",
-        "branch":       "master"
+        "branch":       "refs/tags/android-4.2.1_r1.2"
     },
     {
         "remote":       "aosp",
         "account":      "platform",
         "repository":   "hardware/qcom/power",
         "target_path":  "hardware/qcom/power",
-        "branch":       "master"
+        "branch":       "refs/tags/android-4.2.1_r1.2"
     },
     {
         "remote":       "aosp",
         "account":      "platform",
         "repository":   "hardware/qcom/wlan",
         "target_path":  "hardware/qcom/wlan",
-        "branch":       "master"
+        "branch":       "refs/tags/android-4.2.1_r1.2"
     }
 ]
