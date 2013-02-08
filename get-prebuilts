@@ -30,7 +30,7 @@ if [ "${PREBUILTS_ALL}" == "true" ]; then
 
 	# Get Adobe Flash Player (Source: http://helpx.adobe.com/flash-player/kb/archived-flash-player-versions.html)
 	echo "* Adobe Flash Player"
-	$CURL -L -o $BASEDIR/prebuilt/common/app/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.36/install_flash_player_ics.apk"
+	$CURL -L -o $BASEDIR/prebuilt/common/app/AdobeFlashPlayer.apk -O -L "http://download.macromedia.com/pub/flashplayer/installers/archive/android/11.1.115.37/install_flash_player_ics.apk"
 
 	# Get Amazon Apps Store (Source: http://www.amazon.com/gp/mas/get/android)
 	echo "* Amazon App Store"
